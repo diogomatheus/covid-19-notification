@@ -23,10 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	$('select').formSelect();
 
     // Form formatter
-    $('#cpf_input').formatter({ 'pattern': '{{999}}.{{999}}.{{999}}-{{99}}' });
-    $('#sus_input').formatter({ 'pattern': '{{999999999999999}}' });
-    $('#data_sintoma_dp, #data_nascimento_dp').formatter({ 'pattern': '{{99}}/{{99}}/{{9999}}' });
-    $('#cep_input').formatter({ 'pattern': '{{99999}}-{{999}}' });
+    new Cleave('#cpf_input', { numericOnly: true, delimiters: ['.', '.', '-'], blocks: [3, 3, 3, 2] });
+    new Cleave('#sus_input', { numericOnly: true, blocks: [15] });
+    new Cleave('#data_sintoma_dp', { numericOnly: true, delimiters: ['/', '/', '/'], blocks: [2, 2, 4] });
+    new Cleave('#data_nascimento_dp', { numericOnly: true, delimiters: ['/', '/', '/'], blocks: [2, 2, 4] });
+    new Cleave('#cep_input', { numericOnly: true, delimiters: ['-'], blocks: [5, 3] });
 
 	// Form validation
 	var error_container = $('#error-container');
