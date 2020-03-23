@@ -50,14 +50,20 @@ document.addEventListener('DOMContentLoaded', function() {
 				'required': true,
 				'maxlength': 255
 			},
+			'ocupacao': "required",
 			'data_sintoma': "required",
 			'sintomas[]': "required",
-			'ocupacao': "required",
 			'historico_viagem': "required",
 			'contato_suspeito': "required",
 			'contato_confirmado': "required",
 			'contato_animal': "required",
 			'historico_unidade_saude': "required",
+			'carrinho_sacola_roda': "required",
+			'convivencia_crianca': "required",
+			'animal_estimacao': "required",
+			'carro_particular': "required",
+			'garagem_residencial': "required",
+			'contato_idoso_gestante': "required"
 		},
 		messages: {
 			'nome': {
@@ -78,14 +84,20 @@ document.addEventListener('DOMContentLoaded', function() {
 				'required': "Identificação: Por favor, informe seu endereço.",
 				'maxlength': "Identificação: Seu endereço deve conter no máximo 255 caracteres."
 			},
+			'ocupacao': "Identificação: Por favor, informe sua ocupação.",
 			'data_sintoma': "Dados clínicos: Por favor, informe a data dos primeiros sintomas.",
 			'sintomas[]': "Dados clínicos: Por favor, informe os sintomas apresentados.",
-			'ocupacao': "Dados de exposição e viagens: Por favor, informe sua ocupação.",
 			'historico_viagem': "Dados de exposição e viagens: Por favor, informe sobre seu possível histórico de viagem.",
 			'contato_suspeito': "Dados de exposição e viagens: Por favor, informe sobre seu possível contato com casos suspeitos.",
 			'contato_confirmado': "Dados de exposição e viagens: Por favor, informe sobre seu possível contato com casos confirmados",
 			'contato_animal': "Dados de exposição e viagens: Por favor, informe sobre seu possível contato com animais.",
 			'historico_unidade_saude': "Dados de exposição e viagens: Por favor, informe se você esteve em alguma unidade de saúde.",
+			'carrinho_sacola_roda': "Dados de exposição e viagens: Por favor, informe se você faz uso de carrinho de feira ou sacola com rodinhas.",
+			'convivencia_crianca': "Dados de exposição e viagens: Por favor, informe se você mora ou recebe visita de criança de até 2 (dois) anos.",
+			'animal_estimacao': "Dados de exposição e viagens: Por favor, informe se você convive com algum animal de estimação que passeia nas ruas.",
+			'carro_particular': "Dados de exposição e viagens: Por favor, informe se você utiliza carro particular.",
+			'garagem_residencial': "Dados de exposição e viagens: Por favor, informe se você estaciona seu carro na garagem de sua residencia.",
+			'contato_idoso_gestante': "Dados de exposição e viagens: Por favor, informe se você convive ou manteve contato com idosos ou gestantes?."
 		},
 		errorContainer: error_container,
 		errorLabelContainer: $("ul", error_container),
@@ -132,14 +144,8 @@ function analisar_dados() {
     $.each($("input[name='sintomas[]']:checked"), function(){
         sintomas.push($(this).val());
     });
-
-    var sinais = [];
-    $.each($("input[name='sinais[]']:checked"), function(){
-        sinais.push($(this).val());
-    });
-
-    var dados = sintomas.concat(sinais);
-   	if(dados.indexOf('Febre') !== -1 && dados.indexOf('Tosse') !== -1)
+    
+   	if(sintomas.indexOf('Febre') !== -1 && sintomas.indexOf('Tosse') !== -1)
    		resultado = false
 
     return resultado;

@@ -138,6 +138,19 @@
                                                     <label for="endereco_input">Endereço completo de residência</label>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <select name="ocupacao">
+                                                        <option value="" disabled selected>Selecione uma opção</option>
+                                                        <option>Profissional de saúde</option>
+                                                        <option>Estudante da área de saúde</option>
+                                                        <option>Profissional de laboratório</option>
+                                                        <option>Trabalha em contato com animais</option>
+                                                        <option>Outros</option>
+                                                    </select>
+                                                    <label>Qual é a sua ocupação?</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -181,8 +194,8 @@
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Mialgia/artralgia" type="checkbox" class="filled-in" />
-                                                            <span>Mialgia/artralgia</span>
+                                                            <input name="sintomas[]" value="Dor no corpo" type="checkbox" class="filled-in" />
+                                                            <span>Dor no corpo</span>
                                                         </label>
                                                     </p>
                                                     <p>
@@ -205,8 +218,8 @@
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Coriza" type="checkbox" class="filled-in" />
-                                                            <span>Coriza</span>
+                                                            <input name="sintomas[]" value="Nariz escorrendo" type="checkbox" class="filled-in" />
+                                                            <span>Nariz escorrendo</span>
                                                         </label>
                                                     </p>
                                                     <p>
@@ -237,14 +250,14 @@
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Congestão nasal" type="checkbox" class="filled-in" />
-                                                            <span>Congestão nasal</span>
+                                                            <input name="sintomas[]" value="Nariz entupido" type="checkbox" class="filled-in" />
+                                                            <span>Nariz entupido</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Congestão conjuntival" type="checkbox" class="filled-in" />
-                                                            <span>Congestão conjuntival</span>
+                                                            <input name="sintomas[]" value="Olhos remelentos" type="checkbox" class="filled-in" />
+                                                            <span>Olhos remelentos</span>
                                                         </label>
                                                     </p>
                                                     <p>
@@ -267,8 +280,8 @@
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Batimento das asas nasais" type="checkbox" class="filled-in" />
-                                                            <span>Batimento das asas nasais</span>
+                                                            <input name="sintomas[]" value="Cansaço respiratório" type="checkbox" class="filled-in" />
+                                                            <span>Cansaço respiratório</span>
                                                         </label>
                                                     </p>
                                                     <p>
@@ -283,101 +296,36 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            Selecione os sinais clínicos observados:
+                                            Doenças prévias (selecionar todas doenças pertinentes):
                                             <div class="row">
                                                 <div class="col l6 s12">
                                                     <p>
                                                         <label>
-                                                            <input name="sinais[]" value="Febre" type="checkbox" class="filled-in" />
-                                                            <span>Febre</span>
-                                                        </label>
-                                                    </p>
-                                                    <p>
-                                                        <label>
-                                                            <input name="sinais[]" value="Exsudato faríngeo" type="checkbox" class="filled-in" />
-                                                            <span>Exsudato faríngeo</span>
-                                                        </label>
-                                                    </p>
-                                                    <p>
-                                                        <label>
-                                                            <input name="sinais[]" value="Convulsão" type="checkbox" class="filled-in" />
-                                                            <span>Convulsão</span>
-                                                        </label>
-                                                    </p>
-                                                    <p>
-                                                        <label>
-                                                            <input name="sinais[]" value="Conjuntivite" type="checkbox" class="filled-in" />
-                                                            <span>Conjuntivite</span>
-                                                        </label>
-                                                    </p>
-                                                    <p>
-                                                        <label>
-                                                            <input name="sinais[]" value="Coma" type="checkbox" class="filled-in" />
-                                                            <span>Coma</span>
-                                                        </label>
-                                                    </p>
-                                                </div>
-                                                <div class="col l6 s12">
-                                                    <p>
-                                                        <label>
-                                                            <input name="sinais[]" value="Dispneia/Taquipneia" type="checkbox" class="filled-in" />
-                                                            <span>Dispneia/Taquipneia</span>
-                                                        </label>
-                                                    </p>
-                                                    <p>
-                                                        <label>
-                                                            <input name="sinais[]" value="Alteração de ausculta pulmonar" type="checkbox" class="filled-in" />
-                                                            <span>Alteração de ausculta pulmonar</span>
-                                                        </label>
-                                                    </p>
-                                                    <p>
-                                                        <label>
-                                                            <input name="sinais[]" value="Alteração na radiologia de tórax" type="checkbox" class="filled-in" />
-                                                            <span>Alteração na radiologia de tórax</span>
-                                                        </label>
-                                                    </p>
-                                                    <p>
-                                                        <label>
-                                                            <input name="sinais[]" value="Outros" type="checkbox" class="filled-in" />
-                                                            <span>Outros</span>
-                                                        </label>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12">
-                                            Morbidades prévias (selecionar todas morbidades pertinentes):
-                                            <div class="row">
-                                                <div class="col l6 s12">
-                                                    <p>
-                                                        <label>
-                                                            <input name="morbidades[]" value="Doença cardiovascular, incluindo hipertensão" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Doença cardiovascular, incluindo hipertensão" type="checkbox" class="filled-in" />
                                                             <span>Doença cardiovascular, incluindo hipertensão</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="morbidades[]" value="Diabetes" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Diabetes" type="checkbox" class="filled-in" />
                                                             <span>Diabetes</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="morbidades[]" value="Doença hepática" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Doença hepática" type="checkbox" class="filled-in" />
                                                             <span>Doença hepática</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="morbidades[]" value="Doença neurológica crônica ou neuromuscular" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Doença neurológica crônica ou neuromuscular" type="checkbox" class="filled-in" />
                                                             <span>Doença neurológica crônica ou neuromuscular</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="morbidades[]" value="Imunodeficiência" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Imunodeficiência" type="checkbox" class="filled-in" />
                                                             <span>Imunodeficiência</span>
                                                         </label>
                                                     </p>
@@ -385,25 +333,25 @@
                                                 <div class="col l6 s12">
                                                     <p>
                                                         <label>
-                                                            <input name="morbidades[]" value="Infecção pelo HIV" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Infecção pelo HIV" type="checkbox" class="filled-in" />
                                                             <span>Infecção pelo HIV</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="morbidades[]" value="Doença renal" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Doença renal" type="checkbox" class="filled-in" />
                                                             <span>Doença renal</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="morbidades[]" value="Doença pulmonar crônica" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Doença pulmonar crônica" type="checkbox" class="filled-in" />
                                                             <span>Doença pulmonar crônica</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="morbidades[]" value="Neoplasia (tumor sólido ou hematológico)" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Neoplasia (tumor sólido ou hematológico)" type="checkbox" class="filled-in" />
                                                             <span>Neoplasia (tumor sólido ou hematológico)</span>
                                                         </label>
                                                     </p>
@@ -416,21 +364,8 @@
                                 <div class="section">
                                     <h5 class="valign-wrapper"><i class="material-icons">flight</i> Dados de exposição e viagens</h5>
                                     <div class="row">
-                                        <div class="input-field col s12">
-                                            <select name="ocupacao">
-                                                <option value="" disabled selected>Selecione uma opção</option>
-                                                <option>Profissional de saúde</option>
-                                                <option>Estudante da área de saúde</option>
-                                                <option>Profissional de laboratório</option>
-                                                <option>Trabalha em contato com animais</option>
-                                                <option>Outros</option>
-                                            </select>
-                                            <label>Qual é a sua ocupação?</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col s12">
-                                            Você tem histórico de viagem para fora do Brasil até 14 dias antes do início dos sintomas?<br />
+                                            Você realizou alguma viagem para fora do brasil nos últimos 14 dias antes do início dos sintomas?<br />
                                             <label>
                                                 <input name="historico_viagem" value="Sim" type="radio" />
                                                 <span>Sim</span>
@@ -445,7 +380,7 @@
                                             </label>
                                         </div>
                                         <div class="col s12">
-                                            Você teve contato próximo com uma pessoa que seja caso SUSPEITO de Novo Coronavírus (Covid-19)?<br />
+                                            Você teve contato próximo com uma pessoa que seja caso SUSPEITO de novo coronavírus (Covid-19)?<br />
                                             <label>
                                                 <input name="contato_suspeito" value="Sim" type="radio" />
                                                 <span>Sim</span>
@@ -460,7 +395,7 @@
                                             </label>
                                         </div>
                                         <div class="col s12">
-                                            Você teve contato próximo com uma pessoa que seja caso CONFIRMADO de Novo Coronavírus (Covid-19)?<br />
+                                            Você teve contato próximo com uma pessoa que seja caso CONFIRMADO de novo coronavírus (Covid-19)?<br />
                                             <label>
                                                 <input name="contato_confirmado" value="Sim" type="radio" />
                                                 <span>Sim</span>
@@ -490,7 +425,7 @@
                                             </label>
                                         </div>
                                         <div class="col s12">
-                                            Você esteve em alguma unidade de saúde nos 14 dias antes do início dos sintomas?<br />
+                                            Você esteve em alguma unidade de saúde nos últimos 14 dias antes do início dos sintomas?<br />
                                             <label>
                                                 <input name="historico_unidade_saude" value="Sim" type="radio" />
                                                 <span>Sim</span>
@@ -501,6 +436,96 @@
                                             </label>
                                             <label>
                                                 <input name="historico_unidade_saude" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                        <div class="col s12">
+                                            Você reside em local que faz uso de algum tipo de carrinho de feira ou sacola com rodinhas para trazer as compras do mercado ou da feira?<br />
+                                            <label>
+                                                <input name="carrinho_sacola_roda" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="carrinho_sacola_roda" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="carrinho_sacola_roda" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                        <div class="col s12">
+                                            Você mora ou recebe visita de criança de até 2 (dois) anos em sua residência?<br />
+                                            <label>
+                                                <input name="convivencia_crianca" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="convivencia_crianca" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="convivencia_crianca" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                        <div class="col s12">
+                                            Você convive em sua residência com algum animal de estimação que passeia nas ruas (cachorro, gato, dentre outros)?<br />
+                                            <label>
+                                                <input name="animal_estimacao" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="animal_estimacao" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="animal_estimacao" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                        <div class="col s12">
+                                            Você utiliza carro particular para apoiar seu deslocamento?<br />
+                                            <label>
+                                                <input name="carro_particular" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="carro_particular" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="carro_particular" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                        <div class="col s12">
+                                            Você estaciona seu carro na garagem de sua residencia?<br />
+                                            <label>
+                                                <input name="garagem_residencial" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="garagem_residencial" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="garagem_residencial" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                        <div class="col s12">
+                                            Você convive ou manteve contato com idosos ou gestantes?<br />
+                                            <label>
+                                                <input name="contato_idoso_gestante" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="contato_idoso_gestante" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="contato_idoso_gestante" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
