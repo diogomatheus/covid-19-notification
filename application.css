@@ -1,0 +1,19 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+div#error-container {
+	color: red;
+	display: none
+}
+
+div#error-container ul li {
+	list-style-type: disc;
+	margin-left: 20px;
+}
