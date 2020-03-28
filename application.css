@@ -8,7 +8,7 @@ main {
 	flex: 1 0 auto;
 }
 
-img#main-logo {
+img.main-logo {
 	max-height: 97px;
 }
 
