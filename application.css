@@ -8,6 +8,14 @@ main {
 	flex: 1 0 auto;
 }
 
+img#main-logo {
+	max-height: 97px;
+}
+
+div#service-notes {
+	font-size: 12px;
+}
+
 div#error-container {
 	color: red;
 	display: none
@@ -16,4 +24,14 @@ div#error-container {
 div#error-container ul li {
 	list-style-type: disc;
 	margin-left: 20px;
+}
+
+.select-wrapper label.invalid {
+    margin-top: 62px;
+    margin-left: -11px;
+    color: #F44336;
+}
+
+span.invalid {
+	color: #F44336;
 }
