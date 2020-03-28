@@ -67,13 +67,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Form reset configuration
 	$('#covid-19-diagnosis-form-reset').on('click', function(e) {
-		// Reset materializecss select
+		// Reset inputs
+		$('input').prop('value', '');
+
+		// Reset materializecss selects
 		$('select').val('');
 		$('select').prop('selectedIndex', 0);
     	$('select').formSelect();
 
-    	// Reset materializecss checkbox
-    	$('input[type="checkbox"]:checked').prop('checked', false);
+    	// Reset materializecss checkboxs and radios
+    	$('input[type="checkbox"]:checked, input[type="radio"]:checked').prop('checked', false);
 
     	// Reset the jquery validate
 		if(typeof validator !== 'undefined' && validator !== null)
