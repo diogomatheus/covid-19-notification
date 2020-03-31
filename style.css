@@ -16,6 +16,10 @@ div#service-notes {
 	font-size: 12px;
 }
 
+.input-field>label:not(.label-icon), [type="radio"]+span, [type="checkbox"]+span {
+	color: rgba(0,0,0,0.87);
+}
+
 div#error-container {
 	color: red;
 	display: none
