@@ -28,20 +28,12 @@
         <![endif]-->
     </head>
     <body>
-        <header>
-            <nav class="light-blue darken-3">
-                <div class="nav-wrapper">
-                    <a href="index.html" class="brand-logo center">COVID-19</a>
-                </div>
-            </nav>
-        </header>
         <main>
             <div class="container">
                 <br />
                 <div class="row">
                     <div class="col s12">
                         <div class="center">
-                            <img class="main-logo" src="image/logo-prefeitura.png" alt="Prefeitura da Cidade do Rio de Janeiro">
                             <img class="main-logo" src="image/ufrj-100-anos-azul-horizontal.svg" alt="UFRJ">
                         </div>
                         <div class="center">
@@ -59,7 +51,7 @@
                                 <h5>Por favor, preencha os dados corretamente:</h5>
                                 <ul></ul>
                             </div>
-                            <form action="" method="post" accept-charset="utf-8" name="covid-19-diagnosis-form" id="covid-19-diagnosis-form">
+                            <form action="" method="post" enctype="multipart/form-data" accept-charset="utf-8" name="covid-19-diagnosis-form" id="covid-19-diagnosis-form">
                                 <div class="section">
                                     <h5 class="valign-wrapper"><i class="material-icons">person</i> Identificação</h5>
                                     <div class="row">
@@ -68,6 +60,12 @@
                                                 <div class="input-field col s12">
                                                     <input placeholder="Ex: João da Silva" name="nome" id="nome_input" type="text">
                                                     <label for="nome_input">Nome completo</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <input placeholder="Ex: email@email.com" name="email" id="email_input" type="text">
+                                                    <label for="email_input">Email (opcional)</label>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -91,14 +89,20 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input placeholder="Ex: 999999999999999" name="sus" id="sus_input" type="text">
-                                                    <label for="sus_input">Número do cartão SUS (CNS)</label>
+                                                    <input placeholder="Ex: 31/01/2000" name="data_nascimento" id="data_nascimento_dp" autocomplete="off" type="text" class="datepicker">
+                                                    <label for="data_nascimento_dp">Data de nascimento</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input placeholder="Ex: 31/01/2000" name="data_nascimento" id="data_nascimento_dp" autocomplete="off" type="text" class="datepicker">
-                                                    <label for="data_nascimento_dp">Data de nascimento</label>
+                                                    <input placeholder="Ex: 999999999" name="sus" id="sus_input" type="text">
+                                                    <label for="sus_input">Número do cartão SUS/CNS (opcional)</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <input placeholder="Ex: 999999999" name="siape" id="siape_input" type="text">
+                                                    <label for="siape_input">SIAPE (opcional)</label>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -116,6 +120,12 @@
                                             </div>
                                         </div>
                                         <div class="col l6 s12">
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <input placeholder="Ex: 21 99999 9999" name="telefone" id="telefone_input" type="text">
+                                                    <label for="telefone_input">Telefone de contato</label>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="input-field col s12">
                                                     <input placeholder="Ex: Maria da Silva" name="nome_mae" id="nome_mae_input" type="text">
@@ -149,15 +159,14 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <select id="ocupacao" name="ocupacao">
-                                                        <option value="">Selecione uma opção</option>
-                                                        <option value="Profissional de saúde">Profissional de saúde</option>
-                                                        <option value="Estudante da área de saúde">Estudante da área de saúde</option>
-                                                        <option value="Profissional de laboratório">Profissional de laboratório</option>
-                                                        <option value="Trabalha em contato com animais">Trabalha em contato com animais</option>
-                                                        <option value="Outros">Outros</option>
-                                                    </select>
-                                                    <label for="ocupacao">Qual é a sua ocupação?</label>
+                                                    <input placeholder="Ex: Enfermeiro" name="ocupacao" id="ocupacao_input" type="text">
+                                                    <label for="ocupacao_input">Ocupação/Cargo</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <input placeholder="Ex: Emergência do Hospital XPTO" name="ocupacao_unidade" id="ocupacao_unidade_input" type="text">
+                                                    <label for="ocupacao_unidade_input">Unidade/Departamento (opcional)</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -170,6 +179,24 @@
                                         <div class="input-field col s12">
                                             <input placeholder="Ex: 31/01/2000" name="data_sintoma" id="data_sintoma_dp" type="text" autocomplete="off" class="datepicker">
                                             <label for="data_sintoma_dp">Data dos primeiros sintomas</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <span for="gestante_amamentando">Você está grávida/gestante ou amamentando?</span>
+                                            <br />
+                                            <label>
+                                                <input name="gestante_amamentando" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="gestante_amamentando" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="gestante_amamentando" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -222,7 +249,7 @@
                                                     <p>
                                                         <label>
                                                             <input name="sintomas[]" value="Cefaleia (dor de cabeça)" type="checkbox" class="filled-in" />
-                                                            <span>Cefaleia (dor de cabeça)</span>
+                                                            <span>Dor de cabeça (cefaleia)</span>
                                                         </label>
                                                     </p>
                                                     <p>
@@ -237,12 +264,36 @@
                                                             <span>Irritabilidade/confusão</span>
                                                         </label>
                                                     </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="sintomas[]" value="Desmaio ou perda temporária de consciência" type="checkbox" class="filled-in" />
+                                                            <span>Desmaio ou perda temporária de consciência</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="sintomas[]" value="Sonolência excessiva" type="checkbox" class="filled-in" />
+                                                            <span>Sonolência excessiva</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="sintomas[]" value="Falta de apetite" type="checkbox" class="filled-in" />
+                                                            <span>Falta de apetite</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="sintomas[]" value="Pressão persistente no tórax" type="checkbox" class="filled-in" />
+                                                            <span>Pressão persistente no tórax</span>
+                                                        </label>
+                                                    </p>
                                                 </div>
                                                 <div class="col l6 s12">
                                                     <p>
                                                         <label>
                                                             <input name="sintomas[]" value="Adinamia (fraqueza)" type="checkbox" class="filled-in" />
-                                                            <span>Adinamia (fraqueza)</span>
+                                                            <span>Fraqueza (adinamia)</span>
                                                         </label>
                                                     </p>
                                                     <p>
@@ -295,6 +346,30 @@
                                                     </p>
                                                     <p>
                                                         <label>
+                                                            <input name="sintomas[]" value="Coloração azulada/acinzentada da pele ou unhas" type="checkbox" class="filled-in" />
+                                                            <span>Coloração azulada/acinzentada da pele ou unhas</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="sintomas[]" value="Desidratação" type="checkbox" class="filled-in" />
+                                                            <span>Desidratação</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="sintomas[]" value="Coloração azulada dos lábios ou rosto" type="checkbox" class="filled-in" />
+                                                            <span>Coloração azulada dos lábios ou rosto</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="sintomas[]" value="Saturação de O2 menor que 95% em ar ambiente" type="checkbox" class="filled-in" />
+                                                            <span>Saturação de O2 menor que 95% em ar ambiente</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
                                                             <input name="sintomas[]" value="Outros" type="checkbox" class="filled-in" />
                                                             <span>Outros</span>
                                                         </label>
@@ -305,7 +380,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="doencas[]">Doenças prévias (selecionar todas doenças pertinentes):</span>
+                                            <span for="doencas[]">Doenças prévias (opcional, selecionar todas doenças pertinentes):</span>
                                             <div class="row">
                                                 <div class="col l6 s12">
                                                     <p>
@@ -374,144 +449,224 @@
                                     <h5 class="valign-wrapper"><i class="material-icons">flight</i> Dados de exposição e viagens</h5>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="historico_viagem">Você realizou alguma viagem para fora do brasil nos últimos 14 dias antes do início dos sintomas?</span>
+                                            <span for="trabalhando_atualmente">Você está trabalhando atualmente?</span>
                                             <br />
                                             <label>
-                                                <input name="historico_viagem" value="Sim" type="radio" />
+                                                <input name="trabalhando_atualmente" value="Sim" type="radio" />
                                                 <span>Sim</span>
                                             </label>
                                             <label>
-                                                <input name="historico_viagem" value="Não" type="radio" />
+                                                <input name="trabalhando_atualmente" value="Não" type="radio" />
                                                 <span>Não</span>
                                             </label>
                                             <label>
-                                                <input name="historico_viagem" value="N/A" type="radio" />
+                                                <input name="trabalhando_atualmente" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="contato_suspeito">Você teve contato próximo com uma pessoa que seja caso SUSPEITO de novo coronavírus (COVID-19)?</span>
+                                            <span for="linha_frente">Você trabalha na linha de frente (e.g., profissional da saúde)?</span>
                                             <br />
                                             <label>
-                                                <input name="contato_suspeito" value="Sim" type="radio" />
+                                                <input name="linha_frente" value="Sim" type="radio" />
                                                 <span>Sim</span>
                                             </label>
                                             <label>
-                                                <input name="contato_suspeito" value="Não" type="radio" />
+                                                <input name="linha_frente" value="Não" type="radio" />
                                                 <span>Não</span>
                                             </label>
                                             <label>
-                                                <input name="contato_suspeito" value="N/A" type="radio" />
+                                                <input name="linha_frente" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="contato_confirmado">Você teve contato próximo com uma pessoa que seja caso CONFIRMADO de novo coronavírus (COVID-19)?</span>
+                                            <span for="forma_trabalho">De que forma você está realizando suas funções de trabalho?</span>
                                             <br />
                                             <label>
-                                                <input name="contato_confirmado" value="Sim" type="radio" />
+                                                <input name="forma_trabalho" value="Presencial" type="radio" />
+                                                <span>Presencial</span>
+                                            </label>
+                                            <label>
+                                                <input name="forma_trabalho" value="Semipresencial" type="radio" />
+                                                <span>Semipresencial</span>
+                                            </label>
+                                            <label>
+                                                <input name="forma_trabalho" value="Remoto" type="radio" />
+                                                <span>Remoto</span>
+                                            </label>
+                                            <label>
+                                                <input name="forma_trabalho" value="Não estou trabalhando" type="radio" />
+                                                <span>Não estou trabalhando</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <span for="viagem_recente">Você realizou alguma viagem para fora do brasil nos últimos 14 dias antes do início dos sintomas?</span>
+                                            <br />
+                                            <label>
+                                                <input name="viagem_recente" value="Sim" type="radio" />
                                                 <span>Sim</span>
                                             </label>
                                             <label>
-                                                <input name="contato_confirmado" value="Não" type="radio" />
+                                                <input name="viagem_recente" value="Não" type="radio" />
                                                 <span>Não</span>
                                             </label>
                                             <label>
-                                                <input name="contato_confirmado" value="N/A" type="radio" />
+                                                <input name="viagem_recente" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="contato_animal">Você teve contato com animais em áreas afetadas?</span>
+                                            <span for="quantidade_moradores">Quantas pessoas moram na sua residência?</span>
                                             <br />
                                             <label>
-                                                <input name="contato_animal" value="Sim" type="radio" />
+                                                <input name="quantidade_moradores" value="Moro sozinho" type="radio" />
+                                                <span>Moro sozinho(a)</span>
+                                            </label>
+                                            <label>
+                                                <input name="quantidade_moradores" value="Duas" type="radio" />
+                                                <span>Duas</span>
+                                            </label>
+                                            <label>
+                                                <input name="quantidade_moradores" value="Três" type="radio" />
+                                                <span>Três</span>
+                                            </label>
+                                            <label>
+                                                <input name="quantidade_moradores" value="Quatro ou mais" type="radio" />
+                                                <span>Quatro ou mais</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <span for="proximidade_idoso_gestante">Você convive ou manteve contato próximo com idosos ou gestantes?</span>
+                                            <br />
+                                            <label>
+                                                <input name="proximidade_idoso_gestante" value="Sim" type="radio" />
                                                 <span>Sim</span>
                                             </label>
                                             <label>
-                                                <input name="contato_animal" value="Não" type="radio" />
+                                                <input name="proximidade_idoso_gestante" value="Não" type="radio" />
                                                 <span>Não</span>
                                             </label>
                                             <label>
-                                                <input name="contato_animal" value="N/A" type="radio" />
+                                                <input name="proximidade_idoso_gestante" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="historico_unidade_saude">Você esteve em alguma unidade de saúde nos últimos 14 dias antes do início dos sintomas?</span>
+                                            <span for="proximidade_crianca">Você convive ou manteve contato próximo com criança de até 2 (dois) anos e/ou que necessitem sua assistência exclusiva em sua residência?</span>
                                             <br />
                                             <label>
-                                                <input name="historico_unidade_saude" value="Sim" type="radio" />
+                                                <input name="proximidade_crianca" value="Sim" type="radio" />
                                                 <span>Sim</span>
                                             </label>
                                             <label>
-                                                <input name="historico_unidade_saude" value="Não" type="radio" />
+                                                <input name="proximidade_crianca" value="Não" type="radio" />
                                                 <span>Não</span>
                                             </label>
                                             <label>
-                                                <input name="historico_unidade_saude" value="N/A" type="radio" />
+                                                <input name="proximidade_crianca" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="carrinho_sacola_roda">Você reside em local que faz uso de algum tipo de carrinho de feira ou sacola com rodinhas para trazer as compras do mercado ou da feira?</span>
+                                            <span for="proximidade_caso_suspeito">Você convive ou manteve contato próximo com uma pessoa que seja caso SUSPEITO de novo coronavírus (COVID-19)?</span>
                                             <br />
                                             <label>
-                                                <input name="carrinho_sacola_roda" value="Sim" type="radio" />
+                                                <input name="proximidade_caso_suspeito" value="Sim" type="radio" />
                                                 <span>Sim</span>
                                             </label>
                                             <label>
-                                                <input name="carrinho_sacola_roda" value="Não" type="radio" />
+                                                <input name="proximidade_caso_suspeito" value="Não" type="radio" />
                                                 <span>Não</span>
                                             </label>
                                             <label>
-                                                <input name="carrinho_sacola_roda" value="N/A" type="radio" />
+                                                <input name="proximidade_caso_suspeito" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="convivencia_crianca">Você mora ou recebe visita de criança de até 2 (dois) anos em sua residência?</span>
+                                            <span for="proximidade_caso_confirmado">Você convive ou manteve contato próximo com uma pessoa que seja caso CONFIRMADO de novo coronavírus (COVID-19)?</span>
                                             <br />
                                             <label>
-                                                <input name="convivencia_crianca" value="Sim" type="radio" />
+                                                <input name="proximidade_caso_confirmado" value="Sim" type="radio" />
                                                 <span>Sim</span>
                                             </label>
                                             <label>
-                                                <input name="convivencia_crianca" value="Não" type="radio" />
+                                                <input name="proximidade_caso_confirmado" value="Não" type="radio" />
                                                 <span>Não</span>
                                             </label>
                                             <label>
-                                                <input name="convivencia_crianca" value="N/A" type="radio" />
+                                                <input name="proximidade_caso_confirmado" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="animal_estimacao">Você convive em sua residência com algum animal de estimação que passeia nas ruas (cachorro, gato, dentre outros)?</span>
+                                            <span for="convive_animal_externo">Você convive com animal de estimação que passeia nas ruas (cachorro, gato, dentre outros)?</span>
                                             <br />
                                             <label>
-                                                <input name="animal_estimacao" value="Sim" type="radio" />
+                                                <input name="convive_animal_externo" value="Sim" type="radio" />
                                                 <span>Sim</span>
                                             </label>
                                             <label>
-                                                <input name="animal_estimacao" value="Não" type="radio" />
+                                                <input name="convive_animal_externo" value="Não" type="radio" />
                                                 <span>Não</span>
                                             </label>
                                             <label>
-                                                <input name="animal_estimacao" value="N/A" type="radio" />
+                                                <input name="convive_animal_externo" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <span for="proximidade_animais">Você manteve contato próximo com animais em áreas afetadas?</span>
+                                            <br />
+                                            <label>
+                                                <input name="proximidade_animais" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="proximidade_animais" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="proximidade_animais" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <span for="carrinho_feira">Você faz uso de algum tipo de carrinho de feira ou sacola com rodinhas para trazer as compras do mercado ou da feira?</span>
+                                            <br />
+                                            <label>
+                                                <input name="carrinho_feira" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="carrinho_feira" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="carrinho_feira" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
@@ -536,41 +691,107 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="garagem_residencial">Você estaciona seu carro na garagem de sua residencia?</span>
+                                            <span for="estacionamento_publico_coletivo">Você utiliza estacionamento público ou coletivo?</span>
                                             <br />
                                             <label>
-                                                <input name="garagem_residencial" value="Sim" type="radio" />
+                                                <input name="estacionamento_publico_coletivo" value="Sim" type="radio" />
                                                 <span>Sim</span>
                                             </label>
                                             <label>
-                                                <input name="garagem_residencial" value="Não" type="radio" />
+                                                <input name="estacionamento_publico_coletivo" value="Não" type="radio" />
                                                 <span>Não</span>
                                             </label>
                                             <label>
-                                                <input name="garagem_residencial" value="N/A" type="radio" />
+                                                <input name="estacionamento_publico_coletivo" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="section">
+                                    <h5 class="valign-wrapper"><i class="material-icons">local_hospital</i> Atendimento especializado</h5>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <span for="diagnostico_formal">Você foi diagnosticado formalmente por algum profissional de saúde com o novo coronavírus (COVID-19)?</span>
+                                            <br />
+                                            <label>
+                                                <input name="diagnostico_formal" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="diagnostico_formal" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="diagnostico_formal" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input placeholder="Ex: Hospital XPTO" name="diagnostico_unidade" id="diagnostico_unidade_input" disabled type="text">
+                                            <label for="diagnostico_unidade_input">Unidade de saúde do atendimento (opcional)</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <span for="isolamento_social">Você está em isolamento/distânciamento social?</span>
+                                            <br />
+                                            <label>
+                                                <input name="isolamento_social" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="isolamento_social" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="isolamento_social" value="N/A" type="radio" />
+                                                <span>Não sei</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input placeholder="Ex: 10" name="isolamento_dias" id="isolamento_dias_input" disabled type="text">
+                                            <label for="isolamento_dias_input">Dias de isolamento (opcional)</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <span for="teste_laboratorial">Você realizou teste laboratórial do novo coronavírus (COVID-19)?</span>
+                                            <br />
+                                            <label>
+                                                <input name="teste_laboratorial" value="Sim" type="radio" />
+                                                <span>Sim</span>
+                                            </label>
+                                            <label>
+                                                <input name="teste_laboratorial" value="Não" type="radio" />
+                                                <span>Não</span>
+                                            </label>
+                                            <label>
+                                                <input name="teste_laboratorial" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="contato_idoso_gestante">Você convive ou manteve contato com idosos ou gestantes?</span>
-                                            <br />
-                                            <label>
-                                                <input name="contato_idoso_gestante" value="Sim" type="radio" />
-                                                <span>Sim</span>
-                                            </label>
-                                            <label>
-                                                <input name="contato_idoso_gestante" value="Não" type="radio" />
-                                                <span>Não</span>
-                                            </label>
-                                            <label>
-                                                <input name="contato_idoso_gestante" value="N/A" type="radio" />
-                                                <span>Não sei</span>
-                                            </label>
+                                            <div class="file-field input-field">
+                                                <div class="btn disabled file-disabling-class">
+                                                    <span>Exame (opcional)</span>
+                                                    <input name="teste_laboratorial_arquivo" type="file">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input disabled class="file-path file-disabling-attr" type="text">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <br />
                                 <div>
                                     <div class="row">
                                         <div class="col m6 s12 center-align">
@@ -654,7 +875,8 @@
         <script type="text/javascript" src="plugins/jquery-validation/additional-methods.min.js"></script>
 
         <!--Cleave.js-->
-        <script type="text/javascript" src="plugins/cleave/cleave.min.js"></script>   
+        <script type="text/javascript" src="plugins/cleave/cleave.min.js"></script>
+        <script type="text/javascript" src="plugins/cleave/addons/cleave-phone.i18n.js"></script>
 
         <!--Application script-->
         <script type="text/javascript" src="script.js"></script>
