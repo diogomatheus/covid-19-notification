@@ -1,61 +1,12 @@
 // jQuery Validate
 var validator = null;
 
-// Init
 document.addEventListener('DOMContentLoaded', function() {
-
-	// Materialize form configuration
-	var date = new Date;
-	var i18n = {
-	    today: 'Hoje',
-	    nextMonth: 'Próximo mês',
-	    previousMonth: 'Mês anterior',
-	    weekdaysAbbrev: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
-	    weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
-	    weekdays: ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'],
-	    monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-	    months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-	    clear: 'Limpar',
-	    cancel: 'Cancelar',
-	    done: 'Ok'
-	};
-	$('#data_nascimento_dp').datepicker({
-	    container: 'body',
-	    showDaysInNextAndPreviousMonths: true,
-	    i18n: i18n,
-	    format: 'dd/mm/yyyy',
-		maxDate: date,
-		yearRange: 130,
-		showClearBtn: true
-	});
-	$('#data_sintoma_dp').datepicker({
-	    container: 'body',
-	    showDaysInNextAndPreviousMonths: true,
-	    i18n: i18n,
-	    format: 'dd/mm/yyyy',
-	    maxDate: date,
-	    showClearBtn: true
-	});
-
-	$('select').formSelect();
-	$('select[required]').css({
-		display: 'inline',
-		position: 'absolute',
-		float: 'left',
-		padding: 0,
-		margin: 0,
-		border: '1px solid rgba(255,255,255,0)',
-		height: 0, 
-		width: 0,
-		top: '2em',
-		left: '3em',
-		opacity: 0,
-		pointerEvents: 'none'
-    });
-	$('select, .datepicker, input[name="sintomas[]"]').on('change', function () {
+	$('input[name="sintomas[]"]').on('change', function () {
 		if(typeof validator !== 'undefined' && validator !== null) $(this).valid();
 	});
 
+	// Refactoring
 	$('input[name="diagnostico_formal"]').on('change', function () {
 		var value = $(this).val();
 		if (value === 'Sim') {
@@ -85,15 +36,24 @@ document.addEventListener('DOMContentLoaded', function() {
 			$('.file-disabling-attr').attr('disabled', 'disabled');
 		}
 	});
+	$('input[name="sintomas[]"]').on('change', function () {
+		var symptoms = get_symptoms();
+		if (symptoms.indexOf('Outros') !== -1) {
+			$('#outros_sintomas_input').removeAttr('disabled');
+		} else {
+			$('#outros_sintomas_input').val('');
+			$('#outros_sintomas_input').attr('disabled', 'disabled');
+		}
+	});
 
     // Form formatter configuration
+    new Cleave('#telefone_input', { phone: true, phoneRegionCode: 'BR' });
     new Cleave('#cpf_input', { numericOnly: true, delimiters: ['.', '.', '-'], blocks: [3, 3, 3, 2] });
+    new Cleave('#cep_input', { numericOnly: true, delimiters: ['-'], blocks: [5, 3] });
+    new Cleave('#data_nascimento_dp', { numericOnly: true, delimiters: ['/', '/', '/'], blocks: [2, 2, 4] });
     new Cleave('#sus_input', { numericOnly: true, blocks: [15] });
     new Cleave('#siape_input', { numericOnly: true, blocks: [15] });
     new Cleave('#data_sintoma_dp', { numericOnly: true, delimiters: ['/', '/', '/'], blocks: [2, 2, 4] });
-    new Cleave('#data_nascimento_dp', { numericOnly: true, delimiters: ['/', '/', '/'], blocks: [2, 2, 4] });
-    new Cleave('#cep_input', { numericOnly: true, delimiters: ['-'], blocks: [5, 3] });
-    new Cleave('#telefone_input', { phone: true, phoneRegionCode: 'BR' });
     new Cleave('#isolamento_dias_input', { numericOnly: true, blocks: [15] });
 
 	// Form validation configuration
@@ -105,9 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		$('input').prop('value', '');
 
 		// Reset materializecss selects
+		/*
 		$('select').val('');
 		$('select').prop('selectedIndex', 0);
     	$('select').formSelect();
+    	*/
 
     	// Reset materializecss checkboxs and radios
     	$('input[type="checkbox"]:checked, input[type="radio"]:checked').prop('checked', false);
@@ -333,7 +295,6 @@ function init_form_validation() {
 */
 function analyze_data() {
 	var symptoms = [];
-	$.each($('input[name="sintomas[]"]:checked'), function() { symptoms.push($(this).val()); });
 
 	var isSG_result = isSG(symptoms);
 	var isSRAG_result = isSRAG(isSG, symptoms);
@@ -344,6 +305,16 @@ function analyze_data() {
 		return 'SG';
 	else
 		return 'Normal';
+}
+
+/*
+	get_symptoms
+	@desc TODO.
+*/
+function get_symptoms() {
+	var symptoms = [];
+	$.each($('input[name="sintomas[]"]:checked'), function() { symptoms.push($(this).val()); });
+	return symptoms;
 }
 
 /*
@@ -442,8 +413,8 @@ function isSRAG(isSG, symptoms) {
 	@desc Get user age based on his/her birthdate.
 */
 function getUserAge() {
-	var datepicker = $('#data_nascimento_dp').val();
-	var birthdate = datepicker.split('/');
+	var birthdate_raw = $('#data_nascimento_dp').val();
+	var birthdate = birthdate_raw.split('/');
 
 	// Current date
 	var date = new Date;
