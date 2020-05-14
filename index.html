@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>COVID-19 (coronavírus): Formulário de autonotificação</title>
+        <title>COVID-19 (coronavírus): Formulário de notificação</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <meta name="description" content="Formulário de autonotificação desenvolvido para analisar os sintomas reportado pelo usuário com o objetivo de recomendar ações visando o combate à COVID-19 (coronavírus).">
-        <meta name="keywords" content="COVID-19, coronavírus, formulário de autonotificação, análise, sintomas, recomendação, consulta hospitalar, isolamento">
+        <meta name="description" content="Formulário de notificação desenvolvido com foco na comunicação de casos suspeitos/confirmados de COVID-19 (coronavírus).">
+        <meta name="keywords" content="COVID-19, coronavírus, formulário de notificação, análise, sintomas, recomendação, consulta hospitalar, isolamento">
         <meta name="robots" content="all" />
 
         <link rel="shortcut icon" href="image/favicon.png" type="image/ico"/>
@@ -39,10 +39,10 @@
                             <img class="main-logo" src="image/CTPS-logo.png" alt="CTPS" style="width: 140px; margin-left: 25px;">
                         </div>
                         <div class="center">
-                            <h4>COVID-19 (coronavírus): Formulário de autonotificação</h4>
+                            <h4>COVID-19 (coronavírus): Formulário de notificação</h4>
                         </div>
                         <div id="service-notes" class="center-align">
-                            <p>Esse serviço não substitui uma avaliação realizada por um profissional de saúde.</p>
+                            <p>As recomendações sugeridas por este serviço não substitui uma avaliação realizada por um profissional de saúde.</p>
                         </div>
                     </div>
                 </div>
@@ -62,23 +62,6 @@
                                                 <div class="input-field col s12">
                                                     <input placeholder="Ex: João da Silva" name="nome" id="nome_input" type="text">
                                                     <label for="nome_input">Nome completo</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col s12">
-                                                    <span for="sexo">Sexo:</span>
-                                                    <label>
-                                                        <input name="sexo" value="Masculino" type="radio" class="sexo_radio" />
-                                                        <span>Masculino</span>
-                                                    </label>
-                                                    <label>
-                                                        <input name="sexo" value="Feminimo" type="radio" class="sexo_radio" />
-                                                        <span>Feminimo</span>
-                                                    </label>
-                                                    <label>
-                                                        <input name="sexo" value="Outros" type="radio" class="sexo_radio" />
-                                                        <span>Outros</span>
-                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -124,33 +107,29 @@
                                                     <label for="siape_input">SIAPE (opcional)</label>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <span for="sexo">Sexo:</span>
+                                                    <label>
+                                                        <input name="sexo" value="Masculino" type="radio" class="sexo_radio" />
+                                                        <span>Masculino</span>
+                                                    </label>
+                                                    <label>
+                                                        <input name="sexo" value="Feminimo" type="radio" class="sexo_radio" />
+                                                        <span>Feminimo</span>
+                                                    </label>
+                                                    <label>
+                                                        <input name="sexo" value="Outros" type="radio" class="sexo_radio" />
+                                                        <span>Outros</span>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col l6 s12">
                                             <div class="row">
                                                 <div class="input-field col s12">
                                                     <input placeholder="Ex: Maria da Silva" name="nome_mae" id="nome_mae_input" type="text">
                                                     <label for="nome_mae_input">Nome da mãe</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col s12">
-                                                    <span for="raca">Raça:</span>
-                                                    <label>
-                                                        <input name="raca" value="Branco" type="radio" class="raca_radio" />
-                                                        <span>Branco</span>
-                                                    </label>
-                                                    <label>
-                                                        <input name="raca" value="Pardo" type="radio" class="raca_radio" />
-                                                        <span>Pardo</span>
-                                                    </label>
-                                                    <label>
-                                                        <input name="raca" value="Amarelo" type="radio" class="raca_radio" />
-                                                        <span>Amarelo</span>
-                                                    </label>
-                                                    <label>
-                                                        <input name="raca" value="Indígena" type="radio" class="raca_radio" />
-                                                        <span>Indígena</span>
-                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -194,6 +173,31 @@
                                                 <div class="input-field col s12">
                                                     <input placeholder="Ex: Emergência do Hospital XPTO" name="ocupacao_unidade" id="ocupacao_unidade_input" type="text">
                                                     <label for="ocupacao_unidade_input">Unidade/Departamento (opcional)</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <span for="raca">Raça:</span>
+                                                    <label>
+                                                        <input name="raca" value="Branca" type="radio" class="raca_radio" />
+                                                        <span>Branca</span>
+                                                    </label>
+                                                    <label>
+                                                        <input name="raca" value="Negra" type="radio" class="raca_radio" />
+                                                        <span>Negra</span>
+                                                    </label>
+                                                    <label>
+                                                        <input name="raca" value="Parda" type="radio" class="raca_radio" />
+                                                        <span>Parda</span>
+                                                    </label>
+                                                    <label>
+                                                        <input name="raca" value="Amarela" type="radio" class="raca_radio" />
+                                                        <span>Amarela</span>
+                                                    </label>
+                                                    <label>
+                                                        <input name="raca" value="Indígena" type="radio" class="raca_radio" />
+                                                        <span>Indígena</span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -397,8 +401,8 @@
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Outros" type="checkbox" class="filled-in validate-checkbox" />
-                                                            <span>Outros</span>
+                                                            <input name="sintomas[]" value="Outros sintomas" type="checkbox" class="filled-in validate-checkbox" />
+                                                            <span>Outros sintomas</span>
                                                         </label>
                                                     </p>
                                                 </div>
@@ -408,12 +412,12 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input placeholder="Informar sintomas" disabled name="outros_sintomas" id="outros_sintomas_input" type="text" autocomplete="off">
-                                            <label for="outros_sintomas_input">Outros sintomas (opcional)</label>
+                                            <label for="outros_sintomas_input">Outros sintomas (obrigatório caso tenha outros sintomas)</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="doencas[]">Doenças prévias (opcional, selecionar todas doenças pertinentes):</span>
+                                            <span for="doencas[]">Doenças prévias (selecionar todas doenças pertinentes):</span>
                                             <div class="row">
                                                 <div class="col l6 s12">
                                                     <p>
@@ -444,6 +448,12 @@
                                                         <label>
                                                             <input name="doencas[]" value="Imunodeficiência" type="checkbox" class="filled-in" />
                                                             <span>Imunodeficiência</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="doencas[]" value="Nenhuma doença prévia" type="checkbox" class="filled-in" />
+                                                            <span>Nenhuma doença prévia</span>
                                                         </label>
                                                     </p>
                                                 </div>
@@ -871,7 +881,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="tipos_testagem[]">Qual teste para o novo coronavírus (COVID-19) você fez? (opcional)</span>
+                                            <span for="tipos_testagem[]">Qual teste para o novo coronavírus (COVID-19) você fez? (obrigatório caso tenha realizado testagem)</span>
                                             <div class="row">
                                                 <div class="col l4 s12">
                                                     <p>
@@ -992,6 +1002,10 @@
                                                 <span>Parcialmente recuperado</span>
                                             </label>
                                             <label>
+                                                <input name="estado_atual" value="Obito" type="radio" />
+                                                <span>Obito</span>
+                                            </label>
+                                            <label>
                                                 <input name="estado_atual" value="Não fui diagnosticado" type="radio" />
                                                 <span>Não fui diagnosticado</span>
                                             </label>
@@ -1044,8 +1058,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col s6">
-                        <h5 class="white-text">COVID-19 (coronavírus): Formulário de autonotificação</h5>
-                        <p class="grey-text text-lighten-4">Formulário desenvolvido para analisar os sintomas reportado pelo usuário com o objetivo de recomendar ações visando o combate à COVID-19 (coronavírus).</p>
+                        <h5 class="white-text">COVID-19 (coronavírus): Formulário de notificação</h5>
+                        <p class="grey-text text-lighten-4">Formulário de notificação desenvolvido com foco na comunicação de casos suspeitos/confirmados de COVID-19 (coronavírus).</p>
                     </div>
                     <div class="col offset-s2 s4">
                         <h5 class="white-text">Links úteis</h5>

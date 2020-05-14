@@ -43,7 +43,7 @@ function config_field_dependence() {
 	toggle_target_field('historico_hemodialise', 'Sim', 'hemodialise_dias_input');
 	toggle_target_field('necessidade_especifica', 'Sim', 'necessidade_descricao_input');
 	toggle_target_field('isolamento_social', 'Sim', 'isolamento_dias_input');
-	toggle_target_field('sintomas[]', 'Outros', 'outros_sintomas_input', true);
+	toggle_target_field('sintomas[]', 'Outros sintomas', 'outros_sintomas_input', true);
 	toggle_file_field('exames_internacao[]');
 	toggle_file_field('tipos_testagem[]');
 }
@@ -58,25 +58,32 @@ function config_form_validation() {
 		rules: {
 			// Identificação
 			'nome': { 'required': true, 'maxlength': 100 },
-			'sexo': 'required',
 			'email': { 'email': true },
 			'nacionalidade': 'required',
 			'cpf': 'required',
 			'data_nascimento': 'required',
 			'sus': { 'digits': true },
 			'siape': { 'digits': true },
+			'sexo': 'required',
 			'nome_mae': { 'required': true, 'maxlength': 100 },
-			'raca': 'required',
 			'telefone': 'required',
 			'pais_residencia': 'required',
 			'cep': 'required',
 			'endereco': { 'required': true, 'maxlength': 255 },
 			'ocupacao': { 'required': true, 'maxlength': 100 },
 			'ocupacao_unidade': { 'maxlength': 100 },
+			'raca': 'required',
 			// Dados clínicos
 			'data_sintoma': 'required',
 			'gestante_amamentando': 'required',
 			'sintomas[]': 'required',
+			'outros_sintomas': {
+				'required': function(element) {
+					var symptoms = get_symptoms();
+					return symptoms.includes('Outros sintomas');
+				}
+			},
+			'doencas[]': 'required',
 			// Dados de exposição e viagens
 			'trabalhando_atualmente': 'required',
 			'linha_frente': 'required',
@@ -104,6 +111,11 @@ function config_form_validation() {
 			'historico_hemodialise': 'required',
 			'hemodialise_dias': { 'digits': true },
 			'historico_testagem': 'required',
+			'tipos_testagem[]': {
+				'required': function(element) {
+					return $('input[name="historico_testagem"]:checked').val() === 'Sim';
+				}
+			},
 			'anexo_swab_pcr': { 'extension': 'jpeg|jpg|png|pdf' },
 			'anexo_teste_rapido': { 'extension': 'jpeg|jpg|png|pdf' },
 			'anexo_dosagem_igmigg': { 'extension': 'jpeg|jpg|png|pdf' },
@@ -118,7 +130,6 @@ function config_form_validation() {
 				'required': 'Identificação: Por favor, informe seu nome.',
 				'maxlength': 'Identificação: Seu nome deve conter no máximo 100 caracteres.'
 			},
-			'sexo': 'Identificação: Por favor, informe seu sexo.',
 			'email': {
 				'email': 'Identificação: Por favor, informe um email válido.'
 			},
@@ -131,11 +142,11 @@ function config_form_validation() {
 			'siape': {
 				'digits': 'Atendimento especializado: Por favor, use apenas dígitos ao informar o SIAPE.'
 			},
+			'sexo': 'Identificação: Por favor, informe seu sexo.',
 			'nome_mae': {
 				'required': 'Identificação: Por favor, informe o nome da sua mãe.',
 				'maxlength': 'Identificação: O nome da sua mãe deve conter no máximo 100 caracteres.'
 			},
-			'raca': 'Identificação: Por favor, informe sua raça.',
 			'telefone': 'Identificação: Por favor, informe um telefone de contato.',
 			'pais_residencia': 'Identificação: Por favor, informe seu país de residência.',
 			'cep': 'Identificação: Por favor, informe seu CEP.',
@@ -150,10 +161,13 @@ function config_form_validation() {
 			'ocupacao_unidade': {
 				'maxlength': 'Identificação: Sua unidade/departamento deve conter no máximo 100 caracteres.'
 			},
+			'raca': 'Identificação: Por favor, informe sua raça.',
 			// Dados clínicos
 			'data_sintoma': 'Dados clínicos: Por favor, informe a data dos primeiros sintomas.',
 			'gestante_amamentando': 'Dados clínicos: Por favor, informe se você está grávida ou amamentando.',
 			'sintomas[]': 'Dados clínicos: Por favor, informe os sintomas apresentados.',
+			'outros_sintomas': 'Dados clínicos: Por favor, informe quais são os outros sintomas apresentados.',
+			'doencas[]': 'Dados clínicos: Por favor, informe as doenças prévias existentes.',
 			// Dados de exposição e viagens
 			'trabalhando_atualmente': 'Dados de exposição e viagens: Por favor, informe se você está trabalhando atualmente.',
 			'linha_frente': 'Dados de exposição e viagens: Por favor, informe se você trabalha na linha de frente.',
@@ -193,6 +207,7 @@ function config_form_validation() {
 				'digits': 'Atendimento especializado: Por favor, use apenas dígitos ao informar os dias de hemodiálise.'
 			},
 			'historico_testagem': 'Atendimento especializado: Por favor, informe se vocẽ fez alguma testagem para o novo coronavírus (COVID-19).',
+			'tipos_testagem[]': 'Atendimento especializado: Por favor, informe qual teste para o novo coronavírus (COVID-19) você fez.',
 			'anexo_swab_pcr': {
 				'extension': 'Atendimento especializado: Extensão inválida (Teste Swab PCR), selecione um documento válido (jpeg|jpg|png|pdf).'
 			},
