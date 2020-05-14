@@ -19,7 +19,7 @@
         <!--Materialize-->
         <link type="text/css" rel="stylesheet" href="plugins/materialize/css/materialize.min.css" media="screen,projection"/>
         <!--Application style-->
-        <link type="text/css" rel="stylesheet" href="style.css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" href="application.css" rel="stylesheet" />
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -108,8 +108,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input placeholder="Ex: 31/01/2000" name="data_nascimento" id="data_nascimento_dp" autocomplete="off" type="text" class="datepicker">
-                                                    <label for="data_nascimento_dp">Data de nascimento</label>
+                                                    <input placeholder="Ex: 31/01/2000" name="data_nascimento" id="data_nascimento_input" autocomplete="off" type="text">
+                                                    <label for="data_nascimento_input">Data de nascimento</label>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -204,8 +204,8 @@
                                     <h5 class="valign-wrapper"><i class="material-icons">assignment</i> Dados clínicos</h5>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input placeholder="Ex: 31/01/2000" name="data_sintoma" id="data_sintoma_dp" type="text" autocomplete="off" class="datepicker">
-                                            <label for="data_sintoma_dp">Data dos primeiros sintomas</label>
+                                            <input placeholder="Ex: 31/01/2000" name="data_sintoma" id="data_sintoma_input" type="text" autocomplete="off">
+                                            <label for="data_sintoma_input">Data dos primeiros sintomas</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -233,85 +233,85 @@
                                                 <div class="col l6 s12">
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Febre" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Febre" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Febre</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Tosse" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Tosse" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Tosse</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Dor de garganta" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Dor de garganta" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Dor de garganta</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Dificuldade de respirar" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Dificuldade de respirar" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Dificuldade de respirar</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Dor no corpo" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Dor no corpo" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Dor no corpo</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Diarreia" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Diarreia" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Diarreia</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Náusea/vômitos" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Náusea/vômitos" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Náusea/vômitos</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Cefaleia (dor de cabeça)" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Cefaleia (dor de cabeça)" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Dor de cabeça (cefaleia)</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Nariz escorrendo" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Nariz escorrendo" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Nariz escorrendo</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Irritabilidade/confusão" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Irritabilidade/confusão" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Irritabilidade/confusão</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Desmaio ou perda temporária de consciência" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Desmaio ou perda temporária de consciência" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Desmaio ou perda temporária de consciência</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Sonolência excessiva" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Sonolência excessiva" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Sonolência excessiva</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Falta de apetite" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Falta de apetite" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Falta de apetite</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Pressão persistente no tórax" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Pressão persistente no tórax" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Pressão persistente no tórax</span>
                                                         </label>
                                                     </p>
@@ -319,85 +319,85 @@
                                                 <div class="col l6 s12">
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Adinamia (fraqueza)" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Adinamia (fraqueza)" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Fraqueza (adinamia)</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Produção de escarro" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Produção de escarro" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Produção de escarro</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Calafrios" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Calafrios" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Calafrios</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Nariz entupido" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Nariz entupido" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Nariz entupido</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Olhos remelentos" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Olhos remelentos" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Olhos remelentos</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Dificuldade para deglutir" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Dificuldade para deglutir" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Dificuldade para deglutir</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Manchas vermelhas pelo corpo" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Manchas vermelhas pelo corpo" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Manchas vermelhas pelo corpo</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Gânglios linfáticos aumentados" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Gânglios linfáticos aumentados" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Gânglios linfáticos aumentados</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Cansaço respiratório" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Cansaço respiratório" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Cansaço respiratório</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Coloração azulada/acinzentada da pele ou unhas" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Coloração azulada/acinzentada da pele ou unhas" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Coloração azulada/acinzentada da pele ou unhas</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Desidratação" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Desidratação" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Desidratação</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Coloração azulada dos lábios ou rosto" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Coloração azulada dos lábios ou rosto" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Coloração azulada dos lábios ou rosto</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Saturação de O2 menor que 95% em ar ambiente" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Saturação de O2 menor que 95% em ar ambiente" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Saturação de O2 menor que 95% em ar ambiente</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="sintomas[]" value="Outros" type="checkbox" class="filled-in" />
+                                                            <input name="sintomas[]" value="Outros" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Outros</span>
                                                         </label>
                                                     </p>
@@ -408,7 +408,7 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input placeholder="Informar sintomas" disabled name="outros_sintomas" id="outros_sintomas_input" type="text" autocomplete="off">
-                                            <label for="outros_sintomas_input">Outros sintomas</label>
+                                            <label for="outros_sintomas_input">Outros sintomas (opcional)</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -762,8 +762,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input placeholder="Ex: 7" name="dias_internado" id="dias_internado_input" disabled type="text">
-                                            <label for="dias_internado_input">Quantos dias você ficou internado? (opcional)</label>
+                                            <input placeholder="Ex: 5" name="internacao_dias" id="internacao_dias_input" disabled type="text">
+                                            <label for="internacao_dias_input">Quantos dias você ficou internado? (opcional)</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -828,7 +828,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input placeholder="Ex: 10" name="intubacao_dias" id="intubacao_dias_input" disabled type="text">
+                                            <input placeholder="Ex: 5" name="intubacao_dias" id="intubacao_dias_input" disabled type="text">
                                             <label for="intubacao_dias_input">Quantos dias de intubação? (opcional)</label>
                                         </div>
                                     </div>
@@ -848,7 +848,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input placeholder="Ex: 10" name="hemodialise_dias" id="hemodialise_dias_input" disabled type="text">
+                                            <input placeholder="Ex: 5" name="hemodialise_dias" id="hemodialise_dias_input" disabled type="text">
                                             <label for="hemodialise_dias_input">Quantos dias de hemodiálise? (opcional)</label>
                                         </div>
                                     </div>
@@ -948,7 +948,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input placeholder="Ex: 10" name="isolamento_dias" id="isolamento_dias_input" disabled type="text">
+                                            <input placeholder="Ex: 5" name="isolamento_dias" id="isolamento_dias_input" disabled type="text">
                                             <label for="isolamento_dias_input">Dias de isolamento (opcional)</label>
                                         </div>
                                     </div>
@@ -1051,7 +1051,8 @@
         <script type="text/javascript" src="plugins/cleave/cleave.min.js"></script>
         <script type="text/javascript" src="plugins/cleave/addons/cleave-phone.i18n.js"></script>
 
-        <!--Application script-->
-        <script type="text/javascript" src="script.js"></script>
+        <!--Application scripts-->
+        <script type="text/javascript" src="symptom-analyzer.js"></script>
+        <script type="text/javascript" src="application.js"></script>
     </body>
 </html>
