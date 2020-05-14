@@ -770,7 +770,7 @@
                                         <div class="col s12">
                                             <span for="exames_internacao[]">Quais exames você fez durante sua internação? (opcional)</span>
                                             <div class="row">
-                                                <div class="col l4 s12">
+                                                <div class="col l6 s12">
                                                     <p>
                                                         <label>
                                                             <input name="exames_internacao[]" value="Raio X" type="checkbox" class="filled-in" />
@@ -778,7 +778,7 @@
                                                         </label>
                                                     </p>
                                                 </div>
-                                                <div class="col l4 s12">
+                                                <div class="col l6 s12">
                                                     <p>
                                                         <label>
                                                             <input name="exames_internacao[]" value="Tomografia" type="checkbox" class="filled-in" />
@@ -786,28 +786,31 @@
                                                         </label>
                                                     </p>
                                                 </div>
-                                                <div class="col l4 s12">
-                                                    <p>
-                                                        <label>
-                                                            <input name="exames_internacao[]" value="Testagens para o novo coronavírus (COVID-19)" type="checkbox" class="filled-in" />
-                                                            <span>Testagens para o novo coronavírus (COVID-19)</span>
-                                                        </label>
-                                                    </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="anexo_raiox_container" style="display: none;">
+                                        <div class="col s12">
+                                            <div class="file-field input-field">
+                                                <div class="btn">
+                                                    <span>Raio X</span>
+                                                    <input id="anexo_raiox" name="anexo_raiox" type="file">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input id="anexo_raiox_text" class="file-path" type="text">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="anexo_exame_internacao">
-                                        <div class="row">
-                                            <div class="col s12">
-                                                <div class="file-field input-field">
-                                                    <div class="btn disabled file-disabling-class">
-                                                        <span>Raio X (opcional)</span>
-                                                        <input name="anexo_raixo_x" type="file">
-                                                    </div>
-                                                    <div class="file-path-wrapper">
-                                                        <input disabled class="file-path file-disabling-attr" type="text">
-                                                    </div>
+                                    <div class="row" id="anexo_tomografia_container" style="display: none;">
+                                        <div class="col s12">
+                                            <div class="file-field input-field">
+                                                <div class="btn">
+                                                    <span>Tomografia</span>
+                                                    <input id="anexo_tomografia" name="anexo_tomografia" type="file">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input id="anexo_tomografia_text" class="file-path" type="text">
                                                 </div>
                                             </div>
                                         </div>
@@ -897,17 +900,41 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="anexo_tipo_testagem">
-                                        <div class="row">
-                                            <div class="col s12">
-                                                <div class="file-field input-field">
-                                                    <div class="btn disabled file-disabling-class">
-                                                        <span>Teste Swab PCR (opcional)</span>
-                                                        <input name="anexo_swab_pcr" type="file">
-                                                    </div>
-                                                    <div class="file-path-wrapper">
-                                                        <input disabled class="file-path file-disabling-attr" type="text">
-                                                    </div>
+                                    <div class="row" id="anexo_swab_pcr_container" style="display: none;">
+                                        <div class="col s12">
+                                            <div class="file-field input-field">
+                                                <div class="btn">
+                                                    <span>Teste Swab PCR</span>
+                                                    <input id="anexo_swab_pcr" name="anexo_swab_pcr" type="file">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="anexo_teste_rapido_container" style="display: none;">
+                                        <div class="col s12">
+                                            <div class="file-field input-field">
+                                                <div class="btn">
+                                                    <span>Teste rápido</span>
+                                                    <input id="anexo_teste_rapido" name="anexo_teste_rapido" type="file">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input id="anexo_teste_rapido_text" class="file-path" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="anexo_dosagem_igmigg_container" style="display: none;">
+                                        <div class="col s12">
+                                            <div class="file-field input-field">
+                                                <div class="btn">
+                                                    <span>Dosagem IGM/IGG</span>
+                                                    <input id="anexo_dosagem_igmigg" name="anexo_dosagem_igmigg" type="file">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input id="anexo_dosagem_igmigg_text" class="file-path" type="text">
                                                 </div>
                                             </div>
                                         </div>

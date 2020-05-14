@@ -44,6 +44,8 @@ function config_field_dependence() {
 	toggle_target_field('necessidade_especifica', 'Sim', 'necessidade_descricao_input');
 	toggle_target_field('isolamento_social', 'Sim', 'isolamento_dias_input');
 	toggle_target_field('sintomas[]', 'Outros', 'outros_sintomas_input', true);
+	toggle_file_field('exames_internacao[]');
+	toggle_file_field('tipos_testagem[]');
 }
 
 /*
@@ -95,16 +97,20 @@ function config_form_validation() {
 			'diagnostico_unidade': { 'maxlength': 100 },
 			'historico_internacao': 'required',
 			'internacao_dias': { 'digits': true },
+			'anexo_raiox': { 'extension': 'jpeg|jpg|png|pdf' },
+			'anexo_tomografia': { 'extension': 'jpeg|jpg|png|pdf' },
 			'historico_intubacao': 'required',
 			'intubacao_dias': { 'digits': true },
 			'historico_hemodialise': 'required',
 			'hemodialise_dias': { 'digits': true },
 			'historico_testagem': 'required',
+			'anexo_swab_pcr': { 'extension': 'jpeg|jpg|png|pdf' },
+			'anexo_teste_rapido': { 'extension': 'jpeg|jpg|png|pdf' },
+			'anexo_dosagem_igmigg': { 'extension': 'jpeg|jpg|png|pdf' },
 			'necessidade_especifica': 'required',
 			'isolamento_social': 'required',
 			'isolamento_dias': { 'digits': true },
 			'estado_atual': 'required'
-      		// 'xpto': { 'extension': 'jpeg|jpg|png|pdf' }
 		},
 		messages: {
 			// Identificação
@@ -172,6 +178,12 @@ function config_form_validation() {
 			'internacao_dias': {
 				'digits': 'Atendimento especializado: Por favor, use apenas dígitos ao informar os dias de internação.'
 			},
+			'anexo_raiox': {
+				'extension': 'Atendimento especializado: Extensão inválida (Raio X), selecione um documento válido (jpeg|jpg|png|pdf).'
+			},
+			'anexo_tomografia': {
+				'extension': 'Atendimento especializado: Extensão inválida (Tomografia), selecione um documento válido (jpeg|jpg|png|pdf).'
+			},
 			'historico_intubacao': 'Atendimento especializado: Por favor, informe se vocẽ foi intubado.',
 			'intubacao_dias': {
 				'digits': 'Atendimento especializado: Por favor, use apenas dígitos ao informar os dias de intubação.'
@@ -181,17 +193,21 @@ function config_form_validation() {
 				'digits': 'Atendimento especializado: Por favor, use apenas dígitos ao informar os dias de hemodiálise.'
 			},
 			'historico_testagem': 'Atendimento especializado: Por favor, informe se vocẽ fez alguma testagem para o novo coronavírus (COVID-19).',
+			'anexo_swab_pcr': {
+				'extension': 'Atendimento especializado: Extensão inválida (Teste Swab PCR), selecione um documento válido (jpeg|jpg|png|pdf).'
+			},
+			'anexo_teste_rapido': {
+				'extension': 'Atendimento especializado: Extensão inválida (Teste rápido), selecione um documento válido (jpeg|jpg|png|pdf).'
+			},
+			'anexo_dosagem_igmigg': {
+				'extension': 'Atendimento especializado: Extensão inválida (Dosagem IGM/IGG), selecione um documento válido (jpeg|jpg|png|pdf).'
+			},
 			'necessidade_especifica': 'Atendimento especializado: Por favor, informe se alguma necessidade específica foi identificada no seu atendimento.',
 			'isolamento_social': 'Atendimento especializado: Por favor, informe se vocẽ está em isolamento/distânciamento social.',
 			'isolamento_dias': {
 				'digits': 'Atendimento especializado: Por favor, use apenas dígitos ao informar os dias de isolamento.'
 			},
 			'estado_atual': 'Atendimento especializado: Por favor, informe seu estado atual.'
-      		/*
-      		'xpto': {
-				'extension': 'Atendimento especializado: Extensão do exame digitalizado inválida, selecione um documento válido (jpeg|jpg|png|pdf).'
-			}
-			*/
 		},
 		errorContainer: $('#error-container'),
 		errorLabelContainer: $('ul', $('#error-container')),
@@ -311,6 +327,36 @@ function toggle_target_field(source, expected, target, isArray = false) {
 		} else {
 			target_element.removeAttr('disabled');
 		}
+	});
+}
+
+/*
+	toggle_file_field
+	@desc Toggle file input based on source options.
+*/
+function toggle_file_field(source) {
+	$('input[name="' + source + '"]').on('change', function () {
+		var exam_types = {
+			'Raio X': 'anexo_raiox',
+			'Tomografia': 'anexo_tomografia',
+			'Teste Swab PCR': 'anexo_swab_pcr',
+			'Teste rápido': 'anexo_teste_rapido',
+			'Dosagem IGM/IGG': 'anexo_dosagem_igmigg'
+		}
+
+		$.each($('input[name="' + source + '"]'), function() {
+			var id = exam_types[$(this).val()];
+			var container = $('#' + id + '_container');
+			if (!$(this).prop('checked')) {
+				if(container.css('display') !== 'none') {
+					container.hide();
+					$('#' + id).val(null);
+					$('#' + id + '_text').val(null);
+				}
+			} else {
+				container.show();
+			}
+		});
 	});
 }
 
