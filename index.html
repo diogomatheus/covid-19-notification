@@ -214,18 +214,18 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="gestante_amamentando">Você está grávida/gestante ou amamentando?</span>
+                                            <span for="gestacao_amamentacao">Você está grávida/gestante ou amamentando?</span>
                                             <br />
                                             <label>
-                                                <input name="gestante_amamentando" value="Sim" type="radio" />
+                                                <input name="gestacao_amamentacao" value="Sim" type="radio" />
                                                 <span>Sim</span>
                                             </label>
                                             <label>
-                                                <input name="gestante_amamentando" value="Não" type="radio" />
+                                                <input name="gestacao_amamentacao" value="Não" type="radio" />
                                                 <span>Não</span>
                                             </label>
                                             <label>
-                                                <input name="gestante_amamentando" value="N/A" type="radio" />
+                                                <input name="gestacao_amamentacao" value="N/A" type="radio" />
                                                 <span>Não sei</span>
                                             </label>
                                         </div>
@@ -450,12 +450,6 @@
                                                             <span>Imunodeficiência</span>
                                                         </label>
                                                     </p>
-                                                    <p>
-                                                        <label>
-                                                            <input name="doencas[]" value="Nenhuma doença prévia" type="checkbox" class="filled-in" />
-                                                            <span>Nenhuma doença prévia</span>
-                                                        </label>
-                                                    </p>
                                                 </div>
                                                 <div class="col l6 s12">
                                                     <p>
@@ -486,6 +480,12 @@
                                                         <label>
                                                             <input name="doencas[]" value="Obesidade" type="checkbox" class="filled-in" />
                                                             <span>Obesidade</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="doencas[]" value="Nenhuma doença prévia" type="checkbox" class="filled-in" />
+                                                            <span>Nenhuma doença prévia</span>
                                                         </label>
                                                     </p>
                                                 </div>
@@ -1002,8 +1002,8 @@
                                                 <span>Parcialmente recuperado</span>
                                             </label>
                                             <label>
-                                                <input name="estado_atual" value="Obito" type="radio" />
-                                                <span>Obito</span>
+                                                <input name="estado_atual" value="Óbito" type="radio" />
+                                                <span>Óbito</span>
                                             </label>
                                             <label>
                                                 <input name="estado_atual" value="Não fui diagnosticado" type="radio" />

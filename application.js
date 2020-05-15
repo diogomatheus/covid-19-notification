@@ -58,7 +58,7 @@ function config_form_validation() {
 		rules: {
 			// Identificação
 			'nome': { 'required': true, 'maxlength': 100 },
-			'email': { 'email': true },
+			'email': { 'email': true, 'maxlength': 100 },
 			'nacionalidade': 'required',
 			'cpf': 'required',
 			'data_nascimento': 'required',
@@ -75,13 +75,14 @@ function config_form_validation() {
 			'raca': 'required',
 			// Dados clínicos
 			'data_sintoma': 'required',
-			'gestante_amamentando': 'required',
+			'gestacao_amamentacao': 'required',
 			'sintomas[]': 'required',
 			'outros_sintomas': {
 				'required': function(element) {
 					var symptoms = get_symptoms();
 					return symptoms.includes('Outros sintomas');
-				}
+				},
+				'maxlength': 255
 			},
 			'doencas[]': 'required',
 			// Dados de exposição e viagens
@@ -120,6 +121,7 @@ function config_form_validation() {
 			'anexo_teste_rapido': { 'extension': 'jpeg|jpg|png|pdf' },
 			'anexo_dosagem_igmigg': { 'extension': 'jpeg|jpg|png|pdf' },
 			'necessidade_especifica': 'required',
+			'necessidade_descricao': { 'maxlength': 255 },
 			'isolamento_social': 'required',
 			'isolamento_dias': { 'digits': true },
 			'estado_atual': 'required'
@@ -131,7 +133,8 @@ function config_form_validation() {
 				'maxlength': 'Identificação: Seu nome deve conter no máximo 100 caracteres.'
 			},
 			'email': {
-				'email': 'Identificação: Por favor, informe um email válido.'
+				'email': 'Identificação: Por favor, informe um email válido.',
+				'maxlength': 'Identificação: Seu email deve conter no máximo 100 caracteres.'
 			},
 			'nacionalidade': 'Identificação: Por favor, informe sua nacionalidade.',
 			'cpf': 'Identificação: Por favor, informe seu cpf.',
@@ -164,9 +167,12 @@ function config_form_validation() {
 			'raca': 'Identificação: Por favor, informe sua raça.',
 			// Dados clínicos
 			'data_sintoma': 'Dados clínicos: Por favor, informe a data dos primeiros sintomas.',
-			'gestante_amamentando': 'Dados clínicos: Por favor, informe se você está grávida ou amamentando.',
+			'gestacao_amamentacao': 'Dados clínicos: Por favor, informe se você está grávida ou amamentando.',
 			'sintomas[]': 'Dados clínicos: Por favor, informe os sintomas apresentados.',
-			'outros_sintomas': 'Dados clínicos: Por favor, informe quais são os outros sintomas apresentados.',
+			'outros_sintomas': {
+				'required': 'Dados clínicos: Por favor, informe quais são os outros sintomas apresentados.',
+				'maxlength': 'Dados clínicos: Outros sintomas apresentados deve conter no máximo 255 caracteres.'
+			},
 			'doencas[]': 'Dados clínicos: Por favor, informe as doenças prévias existentes.',
 			// Dados de exposição e viagens
 			'trabalhando_atualmente': 'Dados de exposição e viagens: Por favor, informe se você está trabalhando atualmente.',
@@ -218,6 +224,9 @@ function config_form_validation() {
 				'extension': 'Atendimento especializado: Extensão inválida (Dosagem IGM/IGG), selecione um documento válido (jpeg|jpg|png|pdf).'
 			},
 			'necessidade_especifica': 'Atendimento especializado: Por favor, informe se alguma necessidade específica foi identificada no seu atendimento.',
+			'necessidade_descricao': {
+				'maxlength': 'Atendimento especializado: A descrição das necessidades específicas deve conter no máximo 255 caracteres.'
+			},
 			'isolamento_social': 'Atendimento especializado: Por favor, informe se vocẽ está em isolamento/distânciamento social.',
 			'isolamento_dias': {
 				'digits': 'Atendimento especializado: Por favor, use apenas dígitos ao informar os dias de isolamento.'
