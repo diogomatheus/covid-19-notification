@@ -263,7 +263,7 @@ function config_form_validation() {
         },
         submitHandler: function(form) {
         	$('#loading').fadeIn('slow');
-        	window.location.href = '/result.html';
+        	window.location.href = 'result.html';
         }
 	});
 
