@@ -262,7 +262,8 @@ function config_form_validation() {
             if (errors) $('html, body').animate({ scrollTop: 0 }, 'fast');
         },
         submitHandler: function(form) {
-        	display_result();
+        	$('#loading').fadeIn('slow');
+        	form.submit();
         }
 	});
 
@@ -280,51 +281,6 @@ function config_form_validation() {
 
 		config_form_validation();
 	});
-}
-
-/*
-	display_result
-	@desc Display the analysis result.
-*/
-function display_result() {
-	var icon_label = null, title_color = null, message = null;
-	var birthdate = $('#data_nascimento_input').val();
-	var symptoms = get_symptoms();
-	switch(analyze_data(symptoms, birthdate)) {
-		case 'SG':
-			icon_label = 'warning';
-			title_color = 'orange';
-			message = 'Com base nos dados fornecidos, existe uma suspeita de COVID-19 (coronavírus) relacionada com os sintomas de Síndorme Gripal (SG). Considere realizar uma consulta no hospital mais próximo, principalmente, em caso de evolução dos sintomas.';
-			break;
-		case 'SRAG':
-			icon_label = 'warning';
-			title_color = 'orange';
-			message = 'Com base nos dados fornecidos, existe uma suspeita de COVID-19 (coronavírus) relacionada com os sintomas de Síndrome Respiratória Aguda Grave (SRAG). Por favor, dirija-se ao hospital mais próximo.';
-			break;
-		default:
-			icon_label = 'check';
-			title_color = 'green';
-			message = 'Com base nos dados fornecidos, não há suspeita de de COVID-19 (coronavírus). Continue seguindo as instruções do ministério da saúde.';
-			break;
-	}
-	
-	var username = $('#nome_input').val();
-	var icon_element = $('<i class="material-icons medium"></i>').text(icon_label);
-	var title_element = $('<h5 class="valign-wrapper"></h5>')
-	title_element.css('color', title_color);
-	title_element.append(icon_element)
-				 .append(' Olá ' + username);
-
-    var message_element = $('<p></p>').text(message);
-    var back_element = $('<p class="center"><a href="index.html">Voltar ao formulário</a></p>');
-
-    var content = $('<div class="card-panel z-depth-3"></div>');
-    content.append(title_element)
-    	   .append(message_element)
-    	   .append(back_element);
-
-	$('#main-content').html('<br />').append(content);
-	$('html, body').animate({ scrollTop: 0 }, 'fast');
 }
 
 /*

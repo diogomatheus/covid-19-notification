@@ -28,6 +28,7 @@
         <![endif]-->
     </head>
     <body>
+        <div id="loading"></div>
         <main>
             <div class="container">
                 <br />
@@ -41,9 +42,6 @@
                         <div class="center">
                             <h4>COVID-19 (coronavírus): Formulário de notificação</h4>
                         </div>
-                        <div id="service-notes" class="center-align">
-                            <p>As recomendações sugeridas por este serviço não substitui uma avaliação realizada por um profissional de saúde.</p>
-                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -53,7 +51,7 @@
                                 <h5>Por favor, preencha os dados corretamente:</h5>
                                 <ul></ul>
                             </div>
-                            <form action="" method="post" enctype="multipart/form-data" accept-charset="utf-8" name="covid-19-diagnosis-form" id="covid-19-diagnosis-form">
+                            <form action="/result.html" method="post" enctype="multipart/form-data" accept-charset="utf-8" name="covid-19-diagnosis-form" id="covid-19-diagnosis-form">
                                 <div class="section">
                                     <h5 class="valign-wrapper"><i class="material-icons">person</i> Identificação</h5>
                                     <div class="row">
@@ -1093,7 +1091,6 @@
         <script type="text/javascript" src="plugins/cleave/addons/cleave-phone.i18n.js"></script>
 
         <!--Application scripts-->
-        <script type="text/javascript" src="symptom-analyzer.js"></script>
         <script type="text/javascript" src="application.js"></script>
     </body>
 </html>
