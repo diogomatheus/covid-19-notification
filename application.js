@@ -37,15 +37,24 @@ function config_field_formatter() {
 	@desc Config fields dependence control.
 */
 function config_field_dependence() {
-	toggle_target_field('diagnostico_formal', 'Sim', 'diagnostico_unidade_input');
-	toggle_target_field('historico_internacao', 'Sim', 'internacao_dias_input');
-	toggle_target_field('historico_intubacao', 'Sim', 'intubacao_dias_input');
-	toggle_target_field('historico_hemodialise', 'Sim', 'hemodialise_dias_input');
-	toggle_target_field('necessidade_especifica', 'Sim', 'necessidade_descricao_input');
-	toggle_target_field('isolamento_social', 'Sim', 'isolamento_dias_input');
-	toggle_target_field('sintomas[]', 'Outros sintomas', 'outros_sintomas_input', true);
-	toggle_file_field('exames_internacao[]');
-	toggle_file_field('tipos_testagem[]');
+	toggle_input('diagnostico_formal', 'Sim', false, 'diagnostico_unidade_input');
+	toggle_input('historico_internacao', 'Sim', false, 'internacao_dias_input');
+	toggle_input('historico_intubacao', 'Sim', false, 'intubacao_dias_input');
+	toggle_input('historico_hemodialise', 'Sim', false, 'hemodialise_dias_input');
+	toggle_input('necessidade_especifica', 'Sim', false, 'necessidade_descricao_input');
+	toggle_input('isolamento_social', 'Sim', false, 'isolamento_dias_input');
+	toggle_input('sintomas[]', 'Outros sintomas', true, 'outros_sintomas_input');
+	toggle_input('doencas[]', 'Outras doenças', true, 'outras_doencas_input');
+	toggle_file_input('exames_internacao[]');
+	toggle_file_input('tipos_testagem[]');
+	toggle_visibility('historico_internacao', 'Sim', false, 'intubado_container', [
+		{ type: 'radio', target: 'historico_intubacao' },
+		{ type: 'input', target: 'intubacao_dias_input' }
+	]);
+	toggle_visibility('historico_internacao', 'Sim', false, 'hemodialise_container', [
+		{ type: 'radio', target: 'historico_hemodialise' },
+		{ type: 'input', target: 'hemodialise_dias_input' }
+	]);
 }
 
 /*
@@ -58,7 +67,7 @@ function config_form_validation() {
 		rules: {
 			// Identificação
 			'nome': { 'required': true, 'maxlength': 100 },
-			'email': { 'email': true, 'maxlength': 100 },
+			'email': { 'required': true, 'email': true, 'maxlength': 100 },
 			'nacionalidade': 'required',
 			'cpf': 'required',
 			'data_nascimento': 'required',
@@ -79,12 +88,19 @@ function config_form_validation() {
 			'sintomas[]': 'required',
 			'outros_sintomas': {
 				'required': function(element) {
-					var symptoms = get_symptoms();
+					var symptoms = get_checkbox_values('sintomas[]');
 					return symptoms.includes('Outros sintomas');
 				},
 				'maxlength': 255
 			},
 			'doencas[]': 'required',
+			'outras_doencas': {
+				'required': function(element) {
+					var diseases = get_checkbox_values('doencas[]');
+					return diseases.includes('Outras doenças');
+				},
+				'maxlength': 255
+			},
 			// Dados de exposição e viagens
 			'trabalhando_atualmente': 'required',
 			'linha_frente': 'required',
@@ -107,9 +123,17 @@ function config_form_validation() {
 			'internacao_dias': { 'digits': true },
 			'anexo_raiox': { 'extension': 'jpeg|jpg|png|pdf' },
 			'anexo_tomografia': { 'extension': 'jpeg|jpg|png|pdf' },
-			'historico_intubacao': 'required',
+			'historico_intubacao': {
+				'required': function(element) {
+					return $('input[name="historico_internacao"]:checked').val() === 'Sim';
+				}
+			},
 			'intubacao_dias': { 'digits': true },
-			'historico_hemodialise': 'required',
+			'historico_hemodialise': {
+				'required': function(element) {
+					return $('input[name="historico_internacao"]:checked').val() === 'Sim';
+				}
+			},
 			'hemodialise_dias': { 'digits': true },
 			'historico_testagem': 'required',
 			'tipos_testagem[]': {
@@ -133,6 +157,7 @@ function config_form_validation() {
 				'maxlength': 'Identificação: Seu nome deve conter no máximo 100 caracteres.'
 			},
 			'email': {
+				'required': 'Identificação: Por favor, informe seu email.',
 				'email': 'Identificação: Por favor, informe um email válido.',
 				'maxlength': 'Identificação: Seu email deve conter no máximo 100 caracteres.'
 			},
@@ -174,8 +199,12 @@ function config_form_validation() {
 				'maxlength': 'Dados clínicos: Outros sintomas apresentados deve conter no máximo 255 caracteres.'
 			},
 			'doencas[]': 'Dados clínicos: Por favor, informe as doenças prévias existentes.',
+			'outras_doencas': {
+				'required': 'Dados clínicos: Por favor, informe quais são as outras doenças apresentadas.',
+				'maxlength': 'Dados clínicos: Outras doenças apresentadas deve conter no máximo 255 caracteres.'
+			},
 			// Dados de exposição e viagens
-			'trabalhando_atualmente': 'Dados de exposição e viagens: Por favor, informe se você está trabalhando atualmente.',
+			'trabalhando_atualmente': 'Dados de exposição e viagens: Por favor, informe se você está trabalhando/empregado atualmente.',
 			'linha_frente': 'Dados de exposição e viagens: Por favor, informe se você trabalha na linha de frente.',
 			'forma_trabalho': 'Dados de exposição e viagens: Por favor, informe de que forma você está realizando suas funções de trabalho.',
 			'viagem_recente': 'Dados de exposição e viagens: Por favor, informe sobre seu possível histórico de viagem.',
@@ -263,7 +292,9 @@ function config_form_validation() {
         },
         submitHandler: function(form) {
         	$('#loading').fadeIn('slow');
-        	window.location.href = 'result.html';
+        	setTimeout(function () {
+        		window.location.href = 'result.html';
+		    }, 2000);
         }
 	});
 
@@ -284,22 +315,36 @@ function config_form_validation() {
 }
 
 /*
-	toggle_target_field
+	toggle_visibility
+	@desc Toggle target visibility based on expected source value.
+*/
+function toggle_visibility(source, expected, isArray, target, childs = null) {
+	$('input[name="' + source + '"]').on('change', function () {
+		var target_element = $('#' + target);
+		if (!expectedValueAssertion(source, expected, isArray)) {
+			target_element.hide();
+			if (childs) {
+				childs.forEach(function(child) {
+					if (child.type === 'input')
+						$('#' + child.target).prop('value', '');
+					else
+						$('input[name="' + child.target + '"]:checked').prop('checked', false);
+				});
+			}
+		} else {
+			target_element.show();
+		}
+	});
+}
+
+/*
+	toggle_input
 	@desc Toggle target input based on expected source value.
 */
-function toggle_target_field(source, expected, target, isArray = false) {
+function toggle_input(source, expected, isArray, target) {
 	$('input[name="' + source + '"]').on('change', function () {
-		var disable_element = null;
-		if (isArray) {
-			var values = [];
-			$.each($('input[name="' + source + '"]:checked'), function() { values.push($(this).val()); });
-			disable_element = !values.includes(expected);
-		} else {
-			disable_element = !($(this).val() === expected);
-		}
-
 		var target_element = $('#' + target);
-		if (disable_element) {
+		if (!expectedValueAssertion(source, expected, isArray)) {
 			if(!target_element.attr('disabled')) {
 				target_element.val('');
 				target_element.attr('disabled', 'disabled');
@@ -311,10 +356,10 @@ function toggle_target_field(source, expected, target, isArray = false) {
 }
 
 /*
-	toggle_file_field
+	toggle_file_input
 	@desc Toggle file input based on source options.
 */
-function toggle_file_field(source) {
+function toggle_file_input(source) {
 	$('input[name="' + source + '"]').on('change', function () {
 		var exam_types = {
 			'Raio X': 'anexo_raiox',
@@ -341,11 +386,26 @@ function toggle_file_field(source) {
 }
 
 /*
-	get_symptoms
-	@desc Get the checked symptoms.
+	expectedValueAssertion
+	@desc Check if the source expected value is assert.
 */
-function get_symptoms() {
-	var symptoms = [];
-	$.each($('input[name="sintomas[]"]:checked'), function() { symptoms.push($(this).val()); });
-	return symptoms;
+function expectedValueAssertion(source, expected, isArray = false) {
+	if (isArray) {
+		var values = [];
+		$.each($('input[name="' + source + '"]:checked'), function() { values.push($(this).val()); });
+		return values.includes(expected);
+	} else {
+		var value = $('input[name="' + source + '"]:checked').val();
+		return (value === expected);
+	}
+}
+
+/*
+	get_checkbox_values(name)
+	@desc Get the checkbox checked values.
+*/
+function get_checkbox_values(name) {
+	var list = [];
+	$.each($('input[name="' + name + '"]:checked'), function() { list.push($(this).val()); });
+	return list;
 }

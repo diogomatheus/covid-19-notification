@@ -65,7 +65,7 @@
                                             <div class="row">
                                                 <div class="input-field col s12">
                                                     <input placeholder="Ex: email@email.com" name="email" id="email_input" type="text">
-                                                    <label for="email_input">Email (opcional)</label>
+                                                    <label for="email_input">Email</label>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -409,8 +409,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input placeholder="Informar sintomas" disabled name="outros_sintomas" id="outros_sintomas_input" type="text" autocomplete="off">
-                                            <label for="outros_sintomas_input">Outros sintomas (obrigatório caso tenha outros sintomas)</label>
+                                            <input placeholder="Informar sintoma(s)" disabled name="outros_sintomas" id="outros_sintomas_input" type="text" autocomplete="off">
+                                            <label for="outros_sintomas_input">Outro(s) sintoma(s) (obrigatório caso tenha outros sintomas)</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -420,31 +420,37 @@
                                                 <div class="col l6 s12">
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Doença cardiovascular, incluindo hipertensão" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Nenhuma doença prévia" type="checkbox" class="filled-in validate-checkbox" />
+                                                            <span>Nenhuma doença prévia</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="doencas[]" value="Doença cardiovascular, incluindo hipertensão" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Doença cardiovascular, incluindo hipertensão</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Diabetes" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Diabetes" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Diabetes</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Doença hepática" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Doença hepática" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Doença hepática</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Doença neurológica crônica ou neuromuscular" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Doença neurológica crônica ou neuromuscular" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Doença neurológica crônica ou neuromuscular</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Imunodeficiência" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Imunodeficiência" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Imunodeficiência</span>
                                                         </label>
                                                     </p>
@@ -452,42 +458,48 @@
                                                 <div class="col l6 s12">
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Infecção pelo HIV" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Infecção pelo HIV" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Infecção pelo HIV</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Doença renal" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Doença renal" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Doença renal</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Doença pulmonar crônica" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Doença pulmonar crônica" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Doença pulmonar crônica</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Neoplasia (tumor sólido ou hematológico)" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Neoplasia (tumor sólido ou hematológico)" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Neoplasia (tumor sólido ou hematológico)</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Obesidade" type="checkbox" class="filled-in" />
+                                                            <input name="doencas[]" value="Obesidade" type="checkbox" class="filled-in validate-checkbox" />
                                                             <span>Obesidade</span>
                                                         </label>
                                                     </p>
                                                     <p>
                                                         <label>
-                                                            <input name="doencas[]" value="Nenhuma doença prévia" type="checkbox" class="filled-in" />
-                                                            <span>Nenhuma doença prévia</span>
+                                                            <input name="doencas[]" value="Outras doenças" type="checkbox" class="filled-in validate-checkbox" />
+                                                            <span>Outras doenças</span>
                                                         </label>
                                                     </p>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input placeholder="Informar doença(s)" disabled name="outras_doencas" id="outras_doencas_input" type="text" autocomplete="off">
+                                            <label for="outras_doencas_input">Outra(s) doença(s) (obrigatório caso tenha outras doenças)</label>
                                         </div>
                                     </div>
                                 </div>
@@ -496,7 +508,7 @@
                                     <h5 class="valign-wrapper"><i class="material-icons">flight</i> Dados de exposição e viagens</h5>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="trabalhando_atualmente">Você está trabalhando atualmente?</span>
+                                            <span for="trabalhando_atualmente">Você está trabalhando/empregado atualmente?</span>
                                             <br />
                                             <label>
                                                 <input name="trabalhando_atualmente" value="Sim" type="radio" />
@@ -543,6 +555,10 @@
                                                 <span>Remoto</span>
                                             </label>
                                             <label>
+                                                <input name="forma_trabalho" value="Estou de licença" type="radio" />
+                                                <span>Estou de licença</span>
+                                            </label>
+                                            <label>
                                                 <input name="forma_trabalho" value="Não estou trabalhando" type="radio" />
                                                 <span>Não estou trabalhando</span>
                                             </label>
@@ -564,7 +580,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <span for="quantidade_moradores">Quantas pessoas moram na sua residência?</span>
+                                            <span for="quantidade_moradores">Quantas pessoas moram, incluindo você, na sua residência?</span>
                                             <br />
                                             <label>
                                                 <input name="quantidade_moradores" value="Moro sozinho" type="radio" />
@@ -823,44 +839,48 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col s12">
-                                            <span for="historico_intubacao">Você foi intubado durante sua internação?</span>
-                                            <br />
-                                            <label>
-                                                <input name="historico_intubacao" value="Sim" type="radio" />
-                                                <span>Sim</span>
-                                            </label>
-                                            <label>
-                                                <input name="historico_intubacao" value="Não" type="radio" />
-                                                <span>Não</span>
-                                            </label>
+                                    <div id="intubado_container">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <span for="historico_intubacao">Você foi intubado durante sua internação? (obrigatório caso de internação)</span>
+                                                <br />
+                                                <label>
+                                                    <input name="historico_intubacao" value="Sim" type="radio" />
+                                                    <span>Sim</span>
+                                                </label>
+                                                <label>
+                                                    <input name="historico_intubacao" value="Não" type="radio" />
+                                                    <span>Não</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Ex: 5" name="intubacao_dias" id="intubacao_dias_input" disabled type="text">
+                                                <label for="intubacao_dias_input">Quantos dias de intubação? (opcional)</label>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input placeholder="Ex: 5" name="intubacao_dias" id="intubacao_dias_input" disabled type="text">
-                                            <label for="intubacao_dias_input">Quantos dias de intubação? (opcional)</label>
+                                    <div id="hemodialise_container">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <span for="historico_hemodialise">Você fez hemodiálise durante sua internação? (obrigatório caso de internação)</span>
+                                                <br />
+                                                <label>
+                                                    <input name="historico_hemodialise" value="Sim" type="radio" />
+                                                    <span>Sim</span>
+                                                </label>
+                                                <label>
+                                                    <input name="historico_hemodialise" value="Não" type="radio" />
+                                                    <span>Não</span>
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12">
-                                            <span for="historico_hemodialise">Você fez hemodiálise durante sua internação?</span>
-                                            <br />
-                                            <label>
-                                                <input name="historico_hemodialise" value="Sim" type="radio" />
-                                                <span>Sim</span>
-                                            </label>
-                                            <label>
-                                                <input name="historico_hemodialise" value="Não" type="radio" />
-                                                <span>Não</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input placeholder="Ex: 5" name="hemodialise_dias" id="hemodialise_dias_input" disabled type="text">
-                                            <label for="hemodialise_dias_input">Quantos dias de hemodiálise? (opcional)</label>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Ex: 5" name="hemodialise_dias" id="hemodialise_dias_input" disabled type="text">
+                                                <label for="hemodialise_dias_input">Quantos dias de hemodiálise? (opcional)</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
