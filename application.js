@@ -291,11 +291,10 @@ function config_form_validation() {
             if (errors) $('html, body').animate({ scrollTop: 0 }, 'fast');
         },
         submitHandler: function(form) {
-        	$('#loading').fadeIn('slow');
-        	setTimeout(function () {
-        		window.location.href = 'result.html';
-		    }, 2000);
-        }
+			alert('Formulário de notificação enviado.');
+			form_reset();
+			$('html, body').animate({ scrollTop: 0 }, 'fast');
+		}
 	});
 
 	// Form checkbox force validation
@@ -305,13 +304,21 @@ function config_form_validation() {
 
 	// Form reset configuration
 	$('#covid-19-diagnosis-form-reset').on('click', function(e) {
-		$('input').prop('value', '');
-		$('input[type="checkbox"]:checked, input[type="radio"]:checked').prop('checked', false);
-		if(typeof validator !== 'undefined' && validator !== null)
-			validator.destroy();
-
-		config_form_validation();
+		form_reset();
 	});
+}
+
+/*
+	form_reset
+	@desc Resets form values and configures validations.
+*/
+function form_reset() {
+	$('input').prop('value', '');
+	$('input[type="checkbox"]:checked, input[type="radio"]:checked').prop('checked', false);
+	if(typeof validator !== 'undefined' && validator !== null)
+		validator.destroy();
+
+	config_form_validation();
 }
 
 /*
@@ -321,7 +328,7 @@ function config_form_validation() {
 function toggle_visibility(source, expected, isArray, target, childs = null) {
 	$('input[name="' + source + '"]').on('change', function () {
 		var target_element = $('#' + target);
-		if (!expectedValueAssertion(source, expected, isArray)) {
+		if (!expected_value_assertion(source, expected, isArray)) {
 			target_element.hide();
 			if (childs) {
 				childs.forEach(function(child) {
@@ -344,7 +351,7 @@ function toggle_visibility(source, expected, isArray, target, childs = null) {
 function toggle_input(source, expected, isArray, target) {
 	$('input[name="' + source + '"]').on('change', function () {
 		var target_element = $('#' + target);
-		if (!expectedValueAssertion(source, expected, isArray)) {
+		if (!expected_value_assertion(source, expected, isArray)) {
 			if(!target_element.attr('disabled')) {
 				target_element.val('');
 				target_element.attr('disabled', 'disabled');
@@ -386,10 +393,10 @@ function toggle_file_input(source) {
 }
 
 /*
-	expectedValueAssertion
+	expected_value_assertion
 	@desc Check if the source expected value is assert.
 */
-function expectedValueAssertion(source, expected, isArray = false) {
+function expected_value_assertion(source, expected, isArray = false) {
 	if (isArray) {
 		var values = [];
 		$.each($('input[name="' + source + '"]:checked'), function() { values.push($(this).val()); });
@@ -401,7 +408,7 @@ function expectedValueAssertion(source, expected, isArray = false) {
 }
 
 /*
-	get_checkbox_values(name)
+	get_checkbox_values
 	@desc Get the checkbox checked values.
 */
 function get_checkbox_values(name) {
